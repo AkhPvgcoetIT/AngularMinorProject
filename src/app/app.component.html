@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+
+    <label>
+      <strong>
+        <h1 style="text-align:center;">FORM FILL</h1>
+      </strong></label>
+      <table border='2px' align="center" style="width: 50%;"><tr>
+        <td>
+
+        <form #sForm='ngForm' id="myForm"><div><br>
+
+        <label for="Name">Name:</label>&nbsp;
+        <input type="text" name="name" id="name" placeholder="Your Full Name" [(ngModel)]="f.name" #fnCtrl="ngModel" minlength="5" pattern="[a-zA-Z ]{5,}" required>
+       <span  *ngIf="fnCtrl.touched && fnCtrl.invalid">
+
+          <span *ngIf="fnCtrl.errors?.['required']" style="color:red;"><h5>*Please Enter Your Name.</h5></span>
+          <span *ngIf="fnCtrl.errors?.['minlength']" style="color:blue;"><h5>*Name should have 5 Alphabets.</h5></span>
+          <span *ngIf="fnCtrl.errors?.['pattern']" style="color:green;"><h5>*Name should contain only Alphabets.</h5></span>
+        </span>
+      </div><br>
+
+      <div>
+        <label for="Email">Email:</label>&nbsp;
+        <input type="email" name="email" id="email" placeholder="username@gmail.com" [(ngModel)]="f.email" #idCtrl="ngModel" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" required>
+        <span  *ngIf="idCtrl.touched && idCtrl.invalid">
+          <span *ngIf="idCtrl.errors?.['required']" style="color:red;"><h5>*Please Enter Your Email.</h5></span>
+          <span *ngIf="idCtrl.errors?.['pattern']" style="color:blue;"><h5>*Please Include '@',and after '.' only 2-4 characters in Email.</h5></span>
+        </span>
+      </div><br>
+      <div>
+        <label for="Password">Password:<span style="color: green;">(*Password should be of 8 characters.)</span></label>&nbsp;
+          <input type="password" name="password" placeholder="Password Please!" [(ngModel)]="f.password" #abCtrl="ngModel"  minlength="4" maxlength="8" required>
+          <span  *ngIf="abCtrl.touched && abCtrl.invalid">
+
+            <span *ngIf="abCtrl.errors?.['required']" style="color:red;"><h5>*Please enter your Password</h5></span>
+            <span *ngIf="abCtrl.errors?.['minlength']" style="color:blue;"><h5>*Password should contain minimum 4 characters and it should have ony 8 characters.</h5></span>
+          </span>
+
+
+
+      </div><br>
+      <div>
+        <label for="age">Age:</label>&nbsp;
+        <input type="number" name="age" id="age" placeholder="Your Age" [(ngModel)]="f.age" #bcCtrl="ngModel" min="1" max="200" step="1" style="width: 70px;" required>
+        <span  *ngIf="bcCtrl.touched && bcCtrl.invalid">
+
+          <span *ngIf="bcCtrl.errors?.['required']" style="color:red;"><h5>*Please Provide Your Age</h5></span>
+          <span *ngIf="bcCtrl.errors?.['min']" style="color:blue;"><h5>*Should contain minimum age as 1.</h5></span>
+          <span *ngIf="bcCtrl.errors?.['max']" style="color:green;"><h5>*Should contain maximum age as 200.</h5></span>
+
+
+        </span>
+      </div><br>
+      <div>
+        <label for="datemax">Today's Date:</label>&nbsp;
+        <input type="date" name="date" id="date" placeholder="Today's Date" [(ngModel)]="f.date" #cdCtrl="ngModel" required>
+        <span  *ngIf="cdCtrl.touched && cdCtrl.invalid">
+
+          <span *ngIf="cdCtrl.errors?.['required']" style="color:red;"><h5>*Please Provide Today's Date</h5></span>
+        </span>
+
+      </div><br>
+      <div>
+        <label for="gender">Your Gender:<span style="color: red;">(*Please Provide your Gender.)</span></label><br><br>
+      <div><label for="male">Male</label>
+      <input type="radio" name="gender" id="male" value="male" required [(ngModel)]="f.gender" #deCtrl="ngModel"></div><br>
+      <div><label for="female">Female</label>
+      <input type="radio" name="gender" id="female" value="female" required [(ngModel)]="f.gender" #deCtrl="ngModel"></div><br>
+      <div><label for="other">Other than above</label>
+      <input type="radio" name="gender" id="other" value="other" required [(ngModel)]="f.gender" #deCtrl="ngModel"></div><br>
+      <span  *ngIf="deCtrl.touched && deCtrl.invalid">
+        </span>
+      </div>
+
+
+      <div>
+
+      <label for="phone">Phone.No:</label>&nbsp;
+      <input type="tel" name="phone" id="phone" placeholder="Mobile Number Please!" [(ngModel)]="f.phone" #efCtrl="ngModel"  style="width: 150px;" required pattern="[0-9]{10}">
+      <span  *ngIf="efCtrl.touched && efCtrl.invalid">
+
+        <span *ngIf="efCtrl.errors?.['required']" style="color:red;"><h5>*Please Provide Your Phone</h5></span>
+        <span *ngIf="efCtrl.errors?.['pattern']" style="color:red;"><h5>*Only Enter Numbers from 0-9 upto 10 digits.</h5></span>
+
+      </span>
+
+      </div><br>
+      <div>
+      <button type="submit" id="submit" (click)="test();"  style="text-align: center;" value="submit" [disabled]="sForm.invalid">Submit</button>
+      </div>
+    </form>
+
+
+
+       </td></tr>
+    </table>
+
+
+  </body>
+</html>
